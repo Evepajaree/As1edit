@@ -1,5 +1,5 @@
 import axios from "axios";
-let inputUSDT : number = 290000;
+let usdtAmount : number = 290000;
 let token : number = 0;
 const url ='https://api1.binance.com/api/v3/depth?symbol=BTCUSDT';
 
@@ -9,21 +9,21 @@ axios.get(url).then(response =>{
   const asks = response.data.asks;
   for( let item of asks){
 
-    calculateOutput(item);
+    calculateOutputAmount(item);
    }
 
-    console.log(`Output BTC: ${inputUSDT}  ${token} `);
+    console.log(`Output BTC: ${usdtAmount}  ${token} `);
 
 });
 
-function calculateOutput(orber : any) {
+function calculateOutputAmount(orber : any) {
 
-    let a : number = parseFloat(orber[0]);
-    let b : number = parseFloat(orber[1]);
-    console.log("price= "+a+"\tvolume= "+b);
-    if(inputUSDT > a){
-        token = b + token;
-        inputUSDT = inputUSDT - a ;
+    let price : number = parseFloat(orber[0]);
+    let volume : number = parseFloat(orber[1]);
+    console.log("price= "+price+"\tvolume= "+volume);
+    if(usdtAmount > price){
+        token = volume + token;
+        usdtAmount = usdtAmount - price ;
     }
 
 }
