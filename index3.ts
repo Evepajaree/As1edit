@@ -16,10 +16,10 @@ axios.get(url).then(response =>{
 
 });
 
-function calculateOutputAmount(orber : any) {
+function calculateOutputAmount(item : any) {
 
-    let price : number = parseFloat(orber[0]);
-    let volume : number = parseFloat(orber[1]);
+    let price : number = parseFloat(item[0]);
+    let volume : number = parseFloat(item[1]);
     console.log("price= "+price+"\tvolume= "+volume);
     if(usdtAmount > price){
         token = volume + token;

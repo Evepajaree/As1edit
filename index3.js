@@ -13,9 +13,9 @@ axios_1["default"].get(url).then(function (response) {
     }
     console.log("Output BTC: ".concat(usdtAmount, "  ").concat(token, " "));
 });
-function calculateOutputAmount(orber) {
-    var price = parseFloat(orber[0]);
-    var volume = parseFloat(orber[1]);
+function calculateOutputAmount(order) {
+    var price = parseFloat(order[0]);
+    var volume = parseFloat(order[1]);
     console.log("price= " + price + "\tvolume= " + volume);
     if (usdtAmount > price) {
         token = volume + token;
