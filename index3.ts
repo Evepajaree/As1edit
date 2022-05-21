@@ -1,22 +1,29 @@
 import axios from "axios";
-const url = 'https://api1.binance.com/api/v3/depth?symbol=BTCUSDT';
+let inputUSDT : number = 290000;
+let token : number = 0;
+const url ='https://api1.binance.com/api/v3/depth?symbol=BTCUSDT';
 
+axios.get(url).then(response =>{
+ 
+  const orderBook = response.data;
+  const asks = response.data.bids;
+  for( let item of asks){
 
+    calculateOutput(item);
+   }
 
-axios.get(url).then(response => {
-    console.log('oderbook')
-    console.log(response.data)
-    // const clt = response.data;
+    console.log(`Output BTC: ${inputUSDT}  ${token} `);
 
-    // const object = {};
-
-    // console.log(clt);
-    // let chunked = [[1,2,3], [4,5,6], [7,8,9]];
-
-    // for(let i = 0; i < clt.length; i++) {
-    
-            
-    //     console.log(clt[i]);
-        
-    }
 });
+
+function calculateOutput(orber : any) {
+
+    let a : number = parseFloat(orber[0]);
+    let b : number = parseFloat(orber[1]);
+    console.log("price= "+a+"\tvolume= "+b);
+    if(inputUSDT > a){
+        token = b + token;
+        inputUSDT = inputUSDT - a ;
+    }
+
+}
