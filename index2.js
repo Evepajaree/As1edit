@@ -7,8 +7,8 @@ var b = {};
 var url = 'https://api1.binance.com/api/v3/klines?interval=1h&symbol=BTCUSDT';
 axios_1["default"].get(url).then(function (response) {
     var _a;
-    var candle = response.data;
-    for (var _i = 0, candle_1 = candle; _i < candle_1.length; _i++) {
+    var candle = response.data; // ดึงข้อมูล Candlestick ของ ราคาเหรียญ BTC/USDT
+    for (var _i = 0, candle_1 = candle; _i < candle_1.length; _i++) { //แยกข้อมูลในส่วนที่ไม่ต้องคำนวณใส่ใน object
         var key = candle_1[_i];
         a = {
             'open': key[1],
